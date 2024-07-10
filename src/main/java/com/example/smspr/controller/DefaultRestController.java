@@ -45,4 +45,9 @@ public class DefaultRestController {
 
         return returnData;
     }
+
+    @GetMapping("/ajaxTest")
+    public String index2(@RequestParam int test1) {
+        return "haha " +  test1;
+    }
 }

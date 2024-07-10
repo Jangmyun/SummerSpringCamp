@@ -8,9 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 @Controller
 public class DefaultPageController {
-    @GetMapping("/index")
+
+    // 2024 07 09
+    @GetMapping({"" , "/" , "index"})
     public String index() {
-        return "index";
+        return "redirect:/index";
     }
 
+    // 2024 07 10
+    @GetMapping("/page1")
+    public String page1(){
+        return "page1";
+    }
 }

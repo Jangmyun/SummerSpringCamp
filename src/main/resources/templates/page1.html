@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page1</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Page 1</h1>
+    <a href="/index">to index</a>
+    <button onclick={loadData()}>fetch Data</button>
+
+<script>
+    async function loadData() {
+        const response = await fetch("/api/ajaxTest");
+        const string = await response.json();
+        console.log(string);
+    }
+    loadData();
+</script>
+</body>
+</html>
