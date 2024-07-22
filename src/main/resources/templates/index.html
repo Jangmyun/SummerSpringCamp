@@ -6,10 +6,25 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GOGO</title>
-    <link rel="stylesheet" href="style.css">
-</head> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
 <body>
-    <h1 class="title">go</h1>
-    <p class="text">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+<div id="container">
+    <button onclick="test()">Test Button</button>
+</div>
+
+<script>
+
+    // axios를 통한 get 요청
+    function test() {
+        axios.get('/api/test')
+            .then(response => {
+                alert(response.data);
+            }).catch(error => {
+            console.error("error: ", error);
+        });
+    }
+
+</script>
 </body>
 </html>

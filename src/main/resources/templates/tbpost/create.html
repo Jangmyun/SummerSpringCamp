@@ -2,40 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Page1</title>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>create</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
+<div id="container">
+    <label for="tbpost_title">Title</label><input type="text" id="tbpost_title" placeholder="Title"/>
+    <label for="tbpost_author">Author</label><input type="text" id="tbpost_author" placeholder="Author"/>
+    <label for="tbpost_content">Content</label><input type="text" id="tbpost_content" placeholder="Content"/>
 
-제목
-<input type="text" id="tbpost_title" />
-내용
-<input type="text" id="tbpost_content" />
-<button onclick="create_tbpost()">글 작성</button>
+    <button onclick="create_tbpost()">CREATE</button>
+    <a href="/tbpost/list">List Page</a>
+</div>
 
 <script>
-    function create_tbpost(){
-        $.ajax({
-            url: "/api/tbpost/create",
-            type: "GET",
-            contentType : 'application/json; charset=utf-8',
-            data: {
-                title : $("#tbpost_title").val()
-                ,content : $("#tbpost_content").val()
-            },
-            cache: false,
-            success: (data, status, xhr)=>{
-                //alert("success!!");
-                alert(JSON.stringify(data));
-            },
-            error: (data, status, xhr)=>{
-                alert("error!!");
-                alert(JSON.stringify(data));
-            },
-        });
+    const title = document.querySelector("#tbpost_title");
+    const author = document.querySelector("#tbpost_author");
+    const content = document.querySelector("#tbpost_content");
+
+    function create_tbpost() {
+        const data = {
+            title: title.value,
+            author: author.value,
+            content: content.value
+        };
+
+        axios.post("/api/tbpost", JSON.stringify(data))
+            .then(response => {
+                alert("Success : " + response.data);
+            })
+            .catch(error => {
+                console.log("error : " + error);
+            })
     }
 </script>
-
 </body>
 </html>
