@@ -45,4 +45,31 @@ public class TbpostDto {
     public static class CreateResDto {
         private String id;
     }
+
+    @Builder
+    @Schema
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UpdateReqDto {
+        @Schema(description = "title", example = "")
+        @NotNull
+        @NotEmpty
+        private String id;
+
+        @Schema(description = "title", example = "")
+        @Size(max = 400)
+        private String title;
+
+        @Schema(description = "author", example = "")
+        @Size(max = 400)
+        private String author;
+
+        @Schema(description = "content", example = "")
+        @Size(max = 4000)
+        private String content;
+    }
+
+
 }

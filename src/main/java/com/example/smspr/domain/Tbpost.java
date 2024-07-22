@@ -1,6 +1,7 @@
 package com.example.smspr.domain;
 
 
+import com.example.smspr.dto.TbpostDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,5 +48,9 @@ public class Tbpost extends AuditingFields {
 
     public static Tbpost of(String title, String author, String content) {
         return new Tbpost(title, author, content);
+    }
+
+    public TbpostDto.CreateResDto toCreateResDto() {
+        return TbpostDto.CreateResDto.builder().id(this.getId()).build();
     }
 }
